@@ -2,4 +2,4 @@
 month = ARGV[0]
 year = ARGV[1]
 
-print `cal #{month} #{year}`
+puts `cal #{month} #{year}`

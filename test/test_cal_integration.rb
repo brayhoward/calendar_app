@@ -2,7 +2,15 @@ require_relative 'helper'
 
 require 'minitest/autorun'
 
+  def test_
+    output = `./cal.rb `
+    expected = <<EOS
+EOS
+    assert_equal expected, output
+  end
+
 class TestCalIntegration < Minitest::Test
+
   def test_month_starting_sunday
     output = `./cal.rb 1 2012`
     expected = <<EOS
