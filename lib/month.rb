@@ -3,11 +3,11 @@ class Month
 
 	def initialize(month, year)
 		@month = month
-		@yeat = year
+		@year = year
 	end
 
 	def name
-		
+
 	end
 
 	def to_s
