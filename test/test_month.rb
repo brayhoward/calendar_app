@@ -22,6 +22,7 @@ Su Mo Tu We Th Fr Sa
 29 30 31
 
 EOS
+ assert_equal expected, m.to_s
 	end
 
 	def test_to_s_on_jan_2017
@@ -36,6 +37,7 @@ Su Mo Tu We Th Fr Sa
 29 30 31
 
 EOS
+assert_equal expected, m.to_s
 	end
 
 	def test_to_s_mar_2009
