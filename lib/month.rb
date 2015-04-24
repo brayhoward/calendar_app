@@ -1,6 +1,6 @@
 class Month
 	attr_reader :month, :year
-	@@months = [nil, "January",
+	@@months_array = [nil, "January",
 						  "February",
 						  "March",
 						  "April",
@@ -19,12 +19,12 @@ class Month
 	end
 
 	def name
-		@@months[@month]
+		@@months_array[@month]
 	end
 
 	def to_s
-		<<EOS
-     #{name} #{year}
+		string = "#{name} #{@year}".center(20).rstrip << "\n"
+		string << <<EOS
 Su Mo Tu We Th Fr Sa
  1  2  3  4  5  6  7
  8  9 10 11 12 13 14
@@ -33,6 +33,7 @@ Su Mo Tu We Th Fr Sa
 29 30 31
 
 EOS
+
 	end
 
 end
