@@ -162,127 +162,127 @@ assert_equal expected, m.to_s
 
 	def test_days_in_thrity_day_month
 		m = Month.new(9, 2002)
-		assert_equal 30 ,m.days?
+		assert_equal 30 ,m.length
 	end
 
 	def test_days_in_jan
 		m = Month.new(1, 2003)
-		assert_equal 31 ,m.days?
+		assert_equal 31 ,m.length
 	end
 
 	def test_days_in_feb
 		m = Month.new(2, 2002)
-		assert_equal 28 ,m.days?
+		assert_equal 28 ,m.length
 	end
 
 	def test_days_in_march
 		m = Month.new(3, 2002)
-		assert_equal 31 ,m.days?
+		assert_equal 31 ,m.length
 	end
 
 	def test_days_in_april
 		m = Month.new(4, 2002)
-		assert_equal 30 ,m.days?
+		assert_equal 30 ,m.length
 	end
 
 	def test_days_in_may
 		m = Month.new(5, 2002)
-		assert_equal 31 ,m.days?
+		assert_equal 31 ,m.length
 	end
 
 	def test_days_in_june
 		m = Month.new(6, 2002)
-		assert_equal 30 ,m.days?
+		assert_equal 30 ,m.length
 	end
 
 	def test_days_in_july
 		m = Month.new(7, 2002)
-		assert_equal 31 ,m.days?
+		assert_equal 31 ,m.length
 	end
 
 	def test_days_in_aug
 		m = Month.new(8, 2002)
-		assert_equal 31 ,m.days?
+		assert_equal 31 ,m.length
 	end
 
 	def test_days_in_sep
 		m = Month.new(9, 2002)
-		assert_equal 30 ,m.days?
+		assert_equal 30 ,m.length
 	end
 
 	def test_days_in_oct
 		m = Month.new(10, 2002)
-		assert_equal 31 ,m.days?
+		assert_equal 31 ,m.length
 	end
 
 	def test_days_in_nov
 		m = Month.new(11, 2002)
-		assert_equal 30 ,m.days?
+		assert_equal 30 ,m.length
 	end
 
 	def test_days_in_dec
 		m = Month.new(12, 2002)
-		assert_equal 31 ,m.days?
+		assert_equal 31 ,m.length
 	end
 
 	def test_days_in_jan
 		m = Month.new(1, 2003)
-		assert_equal 31 ,m.days?
+		assert_equal 31 ,m.length
 	end
 
 	def test_days_in_feb
 		m = Month.new(2, 2002)
-		assert_equal 28 ,m.days?
+		assert_equal 28 ,m.length
 	end
 
 	def test_days_in_march
 		m = Month.new(3, 2002)
-		assert_equal 31 ,m.days?
+		assert_equal 31 ,m.length
 	end
 
 	def test_days_in_april
 		m = Month.new(4, 2002)
-		assert_equal 30 ,m.days?
+		assert_equal 30 ,m.length
 	end
 
 	def test_days_in_may
 		m = Month.new(5, 2002)
-		assert_equal 31 ,m.days?
+		assert_equal 31 ,m.length
 	end
 
 	def test_days_in_june
 		m = Month.new(6, 2002)
-		assert_equal 30 ,m.days?
+		assert_equal 30 ,m.length
 	end
 
 	def test_days_in_july
 		m = Month.new(7, 2002)
-		assert_equal 31 ,m.days?
+		assert_equal 31 ,m.length
 	end
 
 	def test_days_in_aug
 		m = Month.new(8, 2002)
-		assert_equal 31 ,m.days?
+		assert_equal 31 ,m.length
 	end
 
 	def test_days_in_sep
 		m = Month.new(9, 2002)
-		assert_equal 30 ,m.days?
+		assert_equal 30 ,m.length
 	end
 
 	def test_days_in_oct
 		m = Month.new(10, 2002)
-		assert_equal 31 ,m.days?
+		assert_equal 31 ,m.length
 	end
 
 	def test_days_in_nov
 		m = Month.new(11, 2002)
-		assert_equal 30 ,m.days?
+		assert_equal 30 ,m.length
 	end
 
 	def test_days_in_dec
 		m = Month.new(12, 2002)
-		assert_equal 31 ,m.days?
+		assert_equal 31 ,m.length
 	end
 
 end

@@ -14,7 +14,7 @@ class Month
 									 31, 30, 31, 30,
 									 31]
 
-	def days?
+	def length
 		@@days_in_month_array[@month]
 	end
 
@@ -29,35 +29,32 @@ class Month
 
 	def to_s
 		day = Day.new(@month, @year)
-		string = "#{name} #{@year}".center(20)
-						.rstrip << "\nSu Mo Tu We Th Fr Sa\n"
+		header = "#{name} #{@year}".center(20).rstrip
+		sub_head = "Su Mo Tu We Th Fr Sa"
+		body = String.new
 
-		if day.start? == 2
-			string << "   "
-			(1..days?).each  do |i|
-				if (1..9).include?(i) and i
-					string << i.to_s.center(3)
+		(1..length).each do |i|
+			body << i.to_s.center(3)
+		end
 
-		else
+		week_1 = body.slice!(0, 21).rstrip
+		week_2 = body.slice!(0, 21).rstrip
+		week_3 = body.slice!(0, 21).rstrip
+		week_4 = body.slice!(0, 21).rstrip
+		week_5 = body.slice!(0, 21).rstrip
+		week_6 = body.slice!(0, 21).rstrip
+		week_7 = body.slice!(0, 21).rstrip
 
-			(1..days?).each  do |i|
-				if (1..9).include?(i) and i != 7
-					string << i.to_s.center(3)
-				elsif i == 7
-					string << i.to_s.center(3).rstrip
-					string << "\n"
-				elsif (1..9).include?(i)
-					string << i.to_s.center(3)
-				elsif i % 7 == 0
-					string << i.to_s
-					string << "\n"
-				else
-				string << i.to_s.center(3)
-				end
-			end
-		string.rstrip
-	  string << "\n\n"
+		<<EOS
+#{header}
+#{sub_head}
+#{week_1}
+#{week_2}
+#{week_3}
+#{week_4}
+#{week_5}
+#{week_6}
+EOS
 	end
 
 end
-
