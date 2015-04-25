@@ -28,7 +28,7 @@ class Month
 	end
 
 	def to_s
-		day = Day.new(@month, @year)
+
 		header = "#{name} #{@year}".center(20).rstrip
 		sub_head = "Su Mo Tu We Th Fr Sa"
 		body = String.new
@@ -37,13 +37,17 @@ class Month
 			body << i.to_s.center(3)
 		end
 
+		first_day_of_month = Day.new(@month, @year).month_start
+		body.prepend(" ".center(3) * first_day_of_month)
+
+
 		week_1 = body.slice!(0, 21).rstrip
-		week_2 = body.slice!(0, 21).rstrip
+ 		week_2 = body.slice!(0, 21).rstrip
 		week_3 = body.slice!(0, 21).rstrip
 		week_4 = body.slice!(0, 21).rstrip
 		week_5 = body.slice!(0, 21).rstrip
 		week_6 = body.slice!(0, 21).rstrip
-		week_7 = body.slice!(0, 21).rstrip
+
 
 		<<EOS
 #{header}
