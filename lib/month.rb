@@ -1,24 +1,17 @@
 class Month
 	attr_reader :month, :year
-	@@months_array = [nil, "January",
-						  "February",
-						  "March",
-						  "April",
-						  "May",
-						  "June",
-						  "July",
-						  "August",
-						  "September",
-						  "October",
-						  "November",
-						  "December"]
+	@@months_array = [nil, "January", "February",
+						  "March", "April", "May", "June",
+						  "July", "August", "September",
+						  "October", "November", "December"]
+
+	@@days_in_month_array = [nil, 31, 28, 31,
+									 30, 31, 30, 31,
+									 31, 30, 31, 30,
+									 31]
 
 	def days?
-		if @month == 9
-			30
-		else
-			28
-		end
+		@@days_in_month_array[@month]
 	end
 
 	def initialize(month, year)
@@ -41,7 +34,7 @@ class Month
 				string << "\n"
 			elsif (1..9).include?(i)
 				string << i.to_s.center(3)
-			elsif i % 7 == 0 and
+			elsif i % 7 == 0
 				string << i.to_s
 				string << "\n"
 			else
@@ -49,8 +42,8 @@ class Month
 			end
 		end
 		string.rstrip
-	  # string << "\n\n"
-	  # string.chomp
+	  string << "\n"
+	  string << "\n"
 	end
 
 end
