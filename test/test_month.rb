@@ -10,7 +10,7 @@ class TestMonth < Minitest::Test
 	end
 
 
-	def test_to_s_on_feb_2012
+	def test_to_s_on_feb_2015
 		m = Month.new(03, 2015)
 		expected = <<EOS
      March 2015

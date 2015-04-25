@@ -13,6 +13,14 @@ class Month
 						  "November",
 						  "December"]
 
+	def days?
+		if @month == 9
+			30
+		else
+			28
+		end
+	end
+
 	def initialize(month, year)
 		@month = month
 		@year = year
@@ -23,17 +31,27 @@ class Month
 	end
 
 	def to_s
-		string = "#{name} #{@year}".center(20).rstrip << "\n"
-		string << <<EOS
-Su Mo Tu We Th Fr Sa
- 1  2  3  4  5  6  7
- 8  9 10 11 12 13 14
-15 16 17 18 19 20 21
-22 23 24 25 26 27 28
-29 30 31
-
-EOS
-
+		string = "#{name} #{@year}".center(20)
+						.rstrip << "\nSu Mo Tu We Th Fr Sa\n"
+		(1..days?).each  do |i|
+			if (1..9).include?(i) and i != 7
+				string << i.to_s.center(3)
+			elsif i == 7
+				string << i.to_s.center(3).rstrip
+				string << "\n"
+			elsif (1..9).include?(i)
+				string << i.to_s.center(3)
+			elsif i % 7 == 0 and
+				string << i.to_s
+				string << "\n"
+			else
+			string << i.to_s.center(3)
+			end
+		end
+		string.rstrip
+	  # string << "\n\n"
+	  # string.chomp
 	end
 
 end
+
