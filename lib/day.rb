@@ -25,8 +25,8 @@ class Day
 		century_year = (@year % 100) #K
 		zero_base = (@year / 100)
 
-		h = ((month_day + ((13 * (month + 1)) / 5).floor) + century_year +
-				(century_year / 4).floor + (zero_base / 4).floor + (5 * zero_base))
+		h = (month_day + ((13 * (month + 1)) / 5).floor + century_year +
+				(century_year / 4).floor + (zero_base / 4).floor + (5 * zero_base)) % 7
 	end
 
 end
