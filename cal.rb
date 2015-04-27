@@ -7,5 +7,5 @@ year = ARGV[1]
 
 m = Month.new(month, year)
 
-m.to_s
+puts m.to_s
 

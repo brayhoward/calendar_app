@@ -19,8 +19,8 @@ class Month
 	end
 
 	def initialize(month, year)
-		@month = month
-		@year = year
+		@month = month.to_i
+		@year = year.to_i
 	end
 
 	def name
