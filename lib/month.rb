@@ -14,14 +14,31 @@ class Month
 									 31, 30, 31, 30,
 									 31]
 
-	def length
 
-		DAYS_IN_MONTH_ARRAY[@month]
-
+	def initialize(month, year)
+		@month = month.to_i
+		@year = year.to_i
+		in_range?
 	end
 
-	def leap_year
+	def in_range?
+		if (1800..3000).include?(@year)
+			true
+		else
+			raise ArgumentError, "Date not in acceptable format/range"
+		end
+	end
 
+	def length
+		if @month == 2 and leap_year
+			29
+		else
+			DAYS_IN_MONTH_ARRAY[@month]
+		end
+	end
+
+
+	def leap_year
 		if @year % 4 == 0 or @year % 400 == 0
 			regular_leap_year = true
 		else
@@ -36,13 +53,8 @@ class Month
 		end
 
 		regular_leap_year and !century_leap_year
-
 	end
 
-	def initialize(month, year)
-		@month = month.to_i
-		@year = year.to_i
-	end
 
 	def name
 		MONTHS_ARRAY[@month]

@@ -5,7 +5,10 @@ require './lib/month'
 month = ARGV[0]
 year = ARGV[1]
 
-m = Month.new(month, year)
-
-puts m.to_s
+begin
+	m = Month.new(month, year)
+	puts m.to_s
+rescue
+	print "Date not in acceptable format/range"
+end
 
