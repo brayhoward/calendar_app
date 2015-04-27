@@ -21,6 +21,7 @@ class Month
 	end
 
 	def leap_year
+
 		if @year % 4 == 0 or @year % 400 == 0
 			regular_leap_year = true
 		else
@@ -34,11 +35,7 @@ class Month
 			century_leap_year = false
 		end
 
-		if regular_leap_year == true and century_leap_year == false
-			true
-		else
-			false
-		end
+		regular_leap_year and !century_leap_year
 
 	end
 
