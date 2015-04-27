@@ -1,11 +1,8 @@
-require_relative 'month'
+
 
 class Day
 
 	attr_reader :month, :year
-
-	# @@month_index_for_zellers = [ nil, 13, 14, 3, 4, 5,
-	# 														6, 7, 8, 9, 10, 11, 12 ]
 
 	def initialize(month, year)
 		@month = month

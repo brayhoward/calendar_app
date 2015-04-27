@@ -145,7 +145,7 @@ EOS
 		assert_equal expected, m.to_s
 	end
 
-	def test_month_with_day_that_start_on_monday
+	def test_month_starting_on_monday
 		m = Month.new(6, 2015)
 		expected = <<EOS
      June 2015
@@ -160,7 +160,7 @@ EOS
 assert_equal expected, m.to_s
 	end
 
-	def test_month_with_day_that_start_on_tues
+	def test_month_starting_on_tues
 		m = Month.new(7, 2003)
 		expected = <<EOS
      July 2003
@@ -171,6 +171,36 @@ Su Mo Tu We Th Fr Sa
 20 21 22 23 24 25 26
 27 28 29 30 31
 
+EOS
+assert_equal expected, m.to_s
+	end
+
+	def test_month_starting_on_wed
+		m = Month.new(5, 2002)
+		expected = <<EOS
+      May 2002
+Su Mo Tu We Th Fr Sa
+          1  2  3  4
+ 5  6  7  8  9 10 11
+12 13 14 15 16 17 18
+19 20 21 22 23 24 25
+26 27 28 29 30 31
+
+EOS
+assert_equal expected, m.to_s
+	end
+
+	def test_month_starting_on_saterday
+		m = Month.new(6, 2002)
+		expected = <<EOS
+     June 2002
+Su Mo Tu We Th Fr Sa
+                   1
+ 2  3  4  5  6  7  8
+ 9 10 11 12 13 14 15
+16 17 18 19 20 21 22
+23 24 25 26 27 28 29
+30
 EOS
 assert_equal expected, m.to_s
 	end
@@ -299,6 +329,52 @@ assert_equal expected, m.to_s
 		m = Month.new(12, 2002)
 		assert_equal 31 ,m.length
 	end
+
+	def test_date_at_begining_of_parmeater
+    m = Month.new(1, 1800)
+    expected = <<EOS
+    January 1800
+Su Mo Tu We Th Fr Sa
+          1  2  3  4
+ 5  6  7  8  9 10 11
+12 13 14 15 16 17 18
+19 20 21 22 23 24 25
+26 27 28 29 30 31
+
+EOS
+    assert_equal expected, m.to_s
+  end
+
+    def test_date_at_end_of_parmeater
+     m = Month.new(12, 3000)
+    expected = <<EOS
+   December 3000
+Su Mo Tu We Th Fr Sa
+    1  2  3  4  5  6
+ 7  8  9 10 11 12 13
+14 15 16 17 18 19 20
+21 22 23 24 25 26 27
+28 29 30 31
+
+EOS
+    assert_equal expected, m.to_s
+  end
+
+  def test_regular_leap_year
+    m = Month.new(2, 2016)
+    expected = <<EOS
+   February 2016
+Su Mo Tu We Th Fr Sa
+    1  2  3  4  5  6
+ 7  8  9 10 11 12 13
+14 15 16 17 18 19 20
+21 22 23 24 25 26 27
+28 29
+
+EOS
+    assert_equal expected, m.to_s
+  end
+
 
 end
 
