@@ -10,17 +10,17 @@ class TestDay < Minitest::Test
 	end
 
 	def test_monthStart_on_a_monday
-		d = Day.new(6, 2003)
+		d = Day.new(9, 2003)
 		assert_equal 1, d.month_start
 	end
 
 	def test_monthStart_on_a_monday_again
-		d = Day.new(7, 2007)
+		d = Day.new(1, 2007)
 		assert_equal 1, d.month_start
 	end
 
 	def test_monthStart_on_a_monday_yet_again
-		d = Day.new(3, 1992)
+		d = Day.new(6, 1992)
 		assert_equal 1, d.month_start
 	end
 
@@ -89,7 +89,7 @@ class TestDay < Minitest::Test
 		assert_equal 1, d.month_start
 	end
 
-	def test_monthStart_on_feb
+	def test_monthStart_on_sat_in_feb
 		d = Day.new(2, 2003)
 		assert_equal 6, d.month_start
 	end

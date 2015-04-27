@@ -12,9 +12,9 @@ class Day
 		@year = year
 	end
 
+
 	def month_start
-		# formula based on Zeller's congruence.
-		# http://en.wikipedia.org/wiki/Zeller's_congruence
+
 		if @month == 1 or @month == 2
 			@month += 12
 			@year -= 1
@@ -22,21 +22,19 @@ class Day
 
 		month_day = 1 #q
 		month = @month #m
+		year = @year
 
+		# formula based on Zeller's congruence.
+		# http://en.wikipedia.org/wiki/Zeller's_congruence
+		start_day_index = (month_day + (( 26 * (month + 1)) / 10) + year + (year / 4) +
+				6 * (year / 100) + (year / 400)) % 7
 
-		h = (month_day + ((((month + 1) * 26) / 10).floor) + year + ((year / 4).floor) +
-				(6 * ((year / 100).floor)) + ((year / 100).floor)) % 7
-
-    ## Zeller's output is as follows.                     **RED FLAG HERE**
-    ## 5 = thursday, 0 = friday, 1 = sat, 2 = sunday, 2 = monday as well
-
-		if h == 0
-			h = 5
-		elsif h == 1
-			h = 6
+		unless start_day_index.zero?
+			start_day_index -1
 		else
-			h - 2
+		 	start_day_index + 6
 		end
+
 	end
 
 end

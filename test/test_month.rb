@@ -160,6 +160,21 @@ EOS
 assert_equal expected, m.to_s
 	end
 
+	def test_month_with_day_that_start_on_tues
+		m = Month.new(7, 2003)
+		expected = <<EOS
+     July 2003
+Su Mo Tu We Th Fr Sa
+       1  2  3  4  5
+ 6  7  8  9 10 11 12
+13 14 15 16 17 18 19
+20 21 22 23 24 25 26
+27 28 29 30 31
+
+EOS
+assert_equal expected, m.to_s
+	end
+
 	def test_days_in_thrity_day_month
 		m = Month.new(9, 2002)
 		assert_equal 30 ,m.length
