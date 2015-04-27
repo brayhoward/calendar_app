@@ -4,18 +4,18 @@ class Month
 
 	attr_reader :month, :year
 
-	@@months_array = [nil, "January", "February",
+	MONTHS_ARRAY = [nil, "January", "February",
 						  "March", "April", "May", "June",
 						  "July", "August", "September",
 						  "October", "November", "December"]
 
-	@@days_in_month_array = [nil, 31, 28, 31,
+	DAYS_IN_MONTH_ARRAY = [nil, 31, 28, 31,
 									 30, 31, 30, 31,
 									 31, 30, 31, 30,
 									 31]
 
 	def length
-		@@days_in_month_array[@month]
+		DAYS_IN_MONTH_ARRAY[@month]
 	end
 
 	def initialize(month, year)
@@ -24,7 +24,7 @@ class Month
 	end
 
 	def name
-		@@months_array[@month]
+		MONTHS_ARRAY[@month]
 	end
 
 	def to_s
