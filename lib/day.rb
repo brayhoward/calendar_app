@@ -22,18 +22,21 @@ class Day
 
 		month_day = 1 #q
 		month = @month #m
-		century_year = (@year % 100) #K
-		zero_base = (@year / 100)
 
-		h = (month_day + ((13 * (month + 1)) / 5).floor + century_year +
-				(century_year / 4).floor + (zero_base / 4).floor + (5 * zero_base)) % 7
 
-		if h.zero?
+		h = (month_day + ((((month + 1) * 26) / 10).floor) + year + ((year / 4).floor) +
+				(6 * ((year / 100).floor)) + ((year / 100).floor)) % 7
+
+    ## Zeller's output is as follows.                     **RED FLAG HERE**
+    ## 5 = thursday, 0 = friday, 1 = sat, 2 = sunday, 2 = monday as well
+
+		if h == 0
+			h = 5
+		elsif h == 1
 			h = 6
 		else
-			h -= 1
+			h - 2
 		end
-
 	end
 
 end
