@@ -36,10 +36,40 @@ EOS
     assert_equal expected, output
   end
 
-  def test_400_year_leap_year
-  output = `./cal.rb 2 2000 `
+  def test_century_leap_year_2100
+  output = `./cal.rb 2 2100 `
   expected = <<EOS
-   February 2000
+   February 2100
+Su Mo Tu We Th Fr Sa
+    1  2  3  4  5  6
+ 7  8  9 10 11 12 13
+14 15 16 17 18 19 20
+21 22 23 24 25 26 27
+28
+
+EOS
+  assert_equal expected, output
+  end
+
+  def test_century_leap_year_2300
+  output = `./cal.rb 2 2300 `
+  expected = <<EOS
+   February 2300
+Su Mo Tu We Th Fr Sa
+             1  2  3
+ 4  5  6  7  8  9 10
+11 12 13 14 15 16 17
+18 19 20 21 22 23 24
+25 26 27 28
+
+EOS
+  assert_equal expected, output
+  end
+
+def test_400_year_leap_year_2400
+  output = `./cal.rb 2 2400 `
+  expected = <<EOS
+   February 2400
 Su Mo Tu We Th Fr Sa
        1  2  3  4  5
  6  7  8  9 10 11 12

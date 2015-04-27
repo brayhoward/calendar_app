@@ -15,7 +15,31 @@ class Month
 									 31]
 
 	def length
+
 		DAYS_IN_MONTH_ARRAY[@month]
+
+	end
+
+	def leap_year
+		if @year % 4 == 0 or @year % 400 == 0
+			regular_leap_year = true
+		else
+			regular_leap_year = false
+		end
+
+
+		if @year % 100 == 0 and @year % 400 != 0
+			century_leap_year = true
+		else
+			century_leap_year = false
+		end
+
+		if regular_leap_year == true and century_leap_year == false
+			true
+		else
+			false
+		end
+
 	end
 
 	def initialize(month, year)

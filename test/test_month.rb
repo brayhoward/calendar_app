@@ -375,6 +375,30 @@ EOS
     assert_equal expected, m.to_s
   end
 
+  def test_leap_year_method_for_reg_leap_year
+  	m = Month.new(2, 2016)
+  	assert_equal true, m.leap_year
+  end
+
+  def test_leap_year_method_for_century_leap_year
+  	m = Month.new(2, 2300)
+  	assert_equal false, m.leap_year
+  end
+
+	def test_leap_year_method_for_400year_leap_year
+  	m = Month.new(2, 2400)
+  	assert_equal true, m.leap_year
+  end
+
+  def test_end_of_century_leap_year
+  	m = Month.new(2, 2000)
+  	assert_equal true, m.leap_year
+  end
+
+  def test_century_leap_year_1900
+  	m = Month.new(2, 1900)
+  	assert_equal false, m.leap_year
+  end
 
 end
 
