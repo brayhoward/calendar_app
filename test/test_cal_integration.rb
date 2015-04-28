@@ -81,6 +81,21 @@ EOS
   assert_equal expected, output
   end
 
+  def test_400_year_leap_year_2800
+  output = `./cal.rb 2 2800 `
+  expected = <<EOS
+   February 2800
+Su Mo Tu We Th Fr Sa
+       1  2  3  4  5
+ 6  7  8  9 10 11 12
+13 14 15 16 17 18 19
+20 21 22 23 24 25 26
+27 28 29
+
+EOS
+  assert_equal expected, output
+  end
+
   def test_1_2015
     output = `./cal.rb 1 2015`
     expected = <<EOS
@@ -295,7 +310,6 @@ EOS
   end
 
   def test_inproper_date_format
-    skip
     output = `./cal.rb 2014 4`
     expected = "Date not in acceptable format/range"
     assert_equal expected, output
