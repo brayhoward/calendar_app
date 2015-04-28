@@ -94,6 +94,11 @@ class TestDay < Minitest::Test
 		assert_equal 6, d.month_start
 	end
 
+	def test_day_month_end
+		d = Day.new(2, 2003)
+		assert_equal 28, d.month_end
+	end
+
 end
 
 

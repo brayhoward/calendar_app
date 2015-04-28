@@ -50,7 +50,8 @@ class Month
 			month << i.to_s.center(3)
 		end
 		first_day_of_month = Day.new(@month, @year).month_start
-		month.prepend("\s\s\s" * first_day_of_month)
+		month.prepend(" ".center(3) * first_day_of_month)
+		month.ljust(100)
 
 	end
 
