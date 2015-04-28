@@ -43,6 +43,17 @@ class Month
 		MONTHS_ARRAY[@month]
 	end
 
+	def to_year
+		month = String.new
+
+		(1..length).each do |i|
+			month << i.to_s.center(3)
+		end
+		first_day_of_month = Day.new(@month, @year).month_start
+		month.prepend("\s\s\s" * first_day_of_month)
+
+	end
+
 	def to_s
 
 		header = "#{name} #{@year}".center(20).rstrip
@@ -54,7 +65,7 @@ class Month
 		end
 
 		first_day_of_month = Day.new(@month, @year).month_start
-		body.prepend(" ".center(3) * first_day_of_month)
+		body.prepend("\s".center(3) * first_day_of_month)
 
 
 		week_1 = body.slice!(0, 21).rstrip
