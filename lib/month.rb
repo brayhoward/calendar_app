@@ -1,3 +1,4 @@
+require_relative 'year'
 require_relative 'day'
 
 class Month
@@ -30,7 +31,8 @@ class Month
 	end
 
 	def length
-		if @month == 2 and leap_year
+		is_leap_year = Year.new(@year).leap_year?
+		if @month == 2 and is_leap_year
 			29
 		else
 			DAYS_IN_MONTH_ARRAY[@month]
