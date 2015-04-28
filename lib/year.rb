@@ -24,4 +24,21 @@ class Year
 		regular_leap_year and not century_leap_year
 	end
 
+	def to_s
+		months = Array.new
+
+		(1..12).each do |i|
+			months[i] = Month.new(i, year).to_s
+		end
+
+# 		"#{months[4]}  #{months[5]}  #{months[6]}"
+# "#{months[7]}  #{months[8]}  #{months[7]}"
+# "#{months[10]}  #{months[11]}  #{months[12]}"
+
+		<<EOS
+"#{months[1]}  #{months[3]}  #{months[4]}"
+EOS
+
+	end
+
 end
