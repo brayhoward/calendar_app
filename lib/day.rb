@@ -28,7 +28,7 @@ class Day
 		unless start_day_index.zero?
 			start_day_index -1
 		else
-		 	start_day_index + 6
+			start_day_index + 6
 		end
 
 	end
