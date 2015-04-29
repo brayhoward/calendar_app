@@ -3,12 +3,6 @@ require_relative '../lib/day'
 
 class TestDay < Minitest::Test
 
-  def test_initializing_a_day_saves_values
-    d = Day.new(5, 2015)
-    assert_equal 05, d.month
-    assert_equal 2015, d.year
-  end
-
   def test_monthStart_on_a_monday
     d = Day.new(9, 2003)
     assert_equal 1, d.month_start
