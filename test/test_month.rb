@@ -3,13 +3,6 @@ require_relative '../lib/month'
 
 class TestMonth < Minitest::Test
 
-	def test_initializing_a_month_saves_values
-		m = Month.new(05, 2015)
-		assert_equal 05, m.month
-		assert_equal 2015, m.year
-	end
-
-
 	def test_to_s_on_feb_2015
 		m = Month.new(03, 2015)
 		expected = <<EOS

@@ -2,8 +2,6 @@
 
 class Day
 
-	attr_reader :month, :year
-
 	def initialize(month, year)
 		@month = month
 		@year = year
@@ -23,8 +21,7 @@ class Day
 
 		# formula based on Zeller's congruence.
 		# http://en.wikipedia.org/wiki/Zeller's_congruence
-		start_day_index = (month_day + (( 26 * (month + 1)) / 10) + year + (year / 4) +
-				6 * (year / 100) + (year / 400)) % 7
+		start_day_index = (month_day + (( 26 * (month + 1)) / 10) + year + (year / 4) + 6 * (year / 100) + (year / 400)) % 7
 
 		unless start_day_index.zero?
 			start_day_index -1

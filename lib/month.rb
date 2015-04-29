@@ -2,8 +2,6 @@ require_relative 'day'
 
 class Month
 
-	attr_reader :month, :year
-
 	MONTHS_ARRAY = [nil, "January", "February",
 						  "March", "April", "May", "June",
 						  "July", "August", "September",
@@ -71,7 +69,7 @@ class Month
 		end
 
 		first_day_of_month = Day.new(@month, @year).month_start
-		body.prepend(" ".center(3) * first_day_of_month)
+		body.prepend("\s\s\s" * first_day_of_month)
 
 
 		week_1 = body.slice!(0, 21).rstrip
