@@ -1,14 +1,13 @@
-
+require_relative 'month'
 
 class Day
 
 	attr_reader :month, :year
 
 	def initialize(month, year)
-		@month = month
-		@year = year
+		@month = month.to_i
+		@year = year.to_i
 	end
-
 
 	def month_start
 

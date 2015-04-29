@@ -51,7 +51,7 @@ class Month
 		end
 		first_day_of_month = Day.new(@month, @year).month_start
 		month.prepend(" ".center(3) * first_day_of_month)
-		month.ljust(100)
+		month.ljust(120)
 
 	end
 
