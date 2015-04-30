@@ -1,14 +1,23 @@
 #!/usr/bin/env ruby
 
 require './lib/month'
+require './lib/year'
 
-month = ARGV[0]
-year = ARGV[1]
+if ARGV.length == 2
 
-begin
-	m = Month.new(month, year)
-	puts m.to_s
-rescue
-	print "Date not in acceptable format/range"
+  begin
+  	puts Month.new(ARGV[0],ARGV[1]).to_s
+  rescue
+  	print "Date not in acceptable format/range"
+  end
+
+else
+
+  begin
+    puts Year.new(ARGV[0]).to_s
+  rescue
+    print "Date not in acceptable format/range"
+  end
+
 end
 

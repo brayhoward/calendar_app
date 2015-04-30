@@ -20,11 +20,12 @@ class Year
     else
       century_leap_year = false
     end
+
     regular_leap_year and not century_leap_year
   end
 
+
   def to_s
-    months = String.new
     heading = @year.to_s.center(63).rstrip
     margin = String.new
     days = "Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa"
@@ -33,60 +34,55 @@ class Year
     header_3 = "        July                 August              September"
     header_4 = "      October               November              December"
 
-    (1..12).each do |i|
-      months << Month.new(i, @year).to_year
+    calendar_year = Array.new
+    12.times do |i|
+      calendar_year[i] = Month.new(i+1, @year).to_year
     end
 
-    row_1 = months.slice!(0, 20) << "\s\s" << months.slice!(100, 20) << "\s\s" << months.slice!(200, 20).rstrip
 
-    row_2 = months.slice!(1, 20) <<  "\s\s" << months.slice!(81, 20) << "\s\s" << months.slice!(161, 20).rstrip
+    row = Array.new
+    6.times do |x|
 
-    row_3 = months.slice!(2, 20) << "\s\s" << months.slice!(62,20) << "\s\s" << months.slice!(122,20)
+      row[x] = Array.new
+      3.times do |i|
+        row[x] << calendar_year[i].slice!(0,7)
+        row[x].push("\s")
+      end
 
-    row_4 = months.slice!(3, 20) << "\s\s" << months.slice!(43,20) << "\s\s" << months.slice!(83,20)
+    end
 
-    row_5 = months.slice!(4, 20) << "\s\s" << months.slice!(24,19) << "\s\s" << months.slice!(44,21)
+    row2 = Array.new
+    6.times do |x|
 
-    row_6 = months.slice!(5, 20) << "\s\s" << months.slice!(5,19) << "\s\s" << months.slice!(05,20).rstrip
+      row2[x] = Array.new
+      3.times do |i|
+        row2[x] << calendar_year[i+3].slice!(0,7)
+        row2[x].push("\s")
+      end
 
-    row_7 = months.slice!(1, 20) << "\s\s" << months.slice!(101, 20) << "\s\s" << months.slice!(201, 20).rstrip
+    end
 
-    row_8 = months.slice!(2, 20) <<  "\s\s" << months.slice!(82, 20) << "\s\s" << months.slice!(162, 20).rstrip
+    row3 = Array.new
+    6.times do |x|
 
-    row_9 = months.slice!(3, 20) << "\s\s" << months.slice!(63,20) << "\s\s" << months.slice!(123,20)
+      row3[x] = Array.new
+      3.times do |i|
+        row3[x] << calendar_year[i+6].slice!(0,7)
+        row3[x].push("\s")
+      end
 
-    row_10 = months.slice!(4, 20) << "\s\s" << months.slice!(44,20) << "\s\s" << months.slice!(84,20)
+    end
 
-    row_11 = months.slice!(5, 20) << "\s\s" << months.slice!(25,19) << "\s\s" << months.slice!(45,21)
+     row4 = Array.new
+    6.times do |x|
 
-    row_12 = months.slice!(6, 20) << "\s\s" << months.slice!(6,19) << "\s\s" << months.slice!(06,20).rstrip  ##### half way #####
+      row4[x] = Array.new
+      3.times do |i|
+        row4[x] << calendar_year[i+9].slice!(0,7)
+        row4[x].push("\s")
+      end
 
-    row_13 = months.slice!(2, 20) << "\s\s" << months.slice!(102, 20) << "\s\s" <<  months.slice!(202, 20).rstrip
-
-    row_14 = months.slice!(3, 20) <<  "\s\s" << months.slice!(83, 20) << "\s\s" << months.slice!(163, 20).rstrip
-
-    row_15 = months.slice!(4, 20) << "\s\s" << months.slice!(64,20) << "\s\s" << months.slice!(124,20)
-
-    row_16 = months.slice!(5, 20) << "\s\s" << months.slice!(45,20) << "\s\s" << months.slice!(85,20)
-
-    row_17 = months.slice!(6, 20) << "\s\s" << months.slice!(26,20) << "\s\s" << months.slice!(46,21).rstrip
-
-    row_18 = months.slice!(7, 20) << "\s\s" << months.slice!(7,20) << "\s\s" << months.slice!(07,20).rstrip
-
-    row_19 = months.slice!(1, 20) << "\s\s" << months.slice!(101, 20) << "\s\s" <<  months.slice!(201, 20).rstrip
-
-    row_20 = months.slice!(2, 20) <<  "\s\s" << months.slice!(82, 20) << "\s\s" << months.slice!(162, 20).rstrip
-
-    row_21 = months.slice!(3, 20) << "\s\s" << months.slice!(63,20) << "\s\s" << months.slice!(123,20)
-
-    row_22 = months.slice!(4, 20) << "\s\s" << months.slice!(44,20) << "\s\s" << months.slice!(84,20)
-
-    row_23 = months.slice!(5, 20) << "\s\s" << months.slice!(25,20) << "\s\s" << months.slice!(45,21).rstrip
-
-    row_24 = months.slice!(6, 20) << "\s\s" << months.slice!(6,20) << "\s\s" << months.slice!(06,20).rstrip
-
-
-
+    end
 
 
 
@@ -95,39 +91,38 @@ class Year
 #{margin}
 #{header_1}
 #{days}
-#{row_1}
-#{row_2}
-#{row_3}
-#{row_4}
-#{row_5}
-#{row_6}
+#{row[0].join.rstrip}
+#{row[1].join.rstrip}
+#{row[2].join.rstrip}
+#{row[3].join.rstrip}
+#{row[4].join.rstrip}
+#{row[5].join.rstrip}
 #{header_2}
 #{days}
-#{row_7}
-#{row_8}
-#{row_9}
-#{row_10}
-#{row_11}
-#{row_12}
+#{row2[0].join.rstrip}
+#{row2[1].join.rstrip}
+#{row2[2].join.rstrip}
+#{row2[3].join.rstrip}
+#{row2[4].join.rstrip}
+#{row2[5].join.rstrip}
 #{header_3}
 #{days}
-#{row_13}
-#{row_14}
-#{row_15}
-#{row_16}
-#{row_17}
-#{row_18}
+#{row3[0].join.rstrip}
+#{row3[1].join.rstrip}
+#{row3[2].join.rstrip}
+#{row3[3].join.rstrip}
+#{row3[4].join.rstrip}
+#{row3[5].join.rstrip}
 #{header_4}
 #{days}
-#{row_19}
-#{row_20}
-#{row_21}
-#{row_22}
-#{row_23}
-#{row_24}
+#{row4[0].join.rstrip}
+#{row4[1].join.rstrip}
+#{row4[2].join.rstrip}
+#{row4[3].join.rstrip}
+#{row4[4].join.rstrip}
+#{row4[5].join.rstrip}
 EOS
-
-
   end
 
 end
+
