@@ -46,12 +46,15 @@ class Month
     (1..length).each do |i|
       month << i.to_s.center(3)
     end
+
     first_day_of_month = Day.new(@month, @year).month_start
+
     first_day_of_month.times do
     month.unshift("\s\s\s")
     end
 
-    (42 - month.length).times do
+    grid_size = 42
+    (grid_size - month.length).times do
       month.push("\s\s\s")
     end
     month
@@ -71,7 +74,8 @@ class Month
     first_day_of_month = Day.new(@month, @year).month_start
     body.prepend("\s\s\s" * first_day_of_month)
 
-    (1..6).each do |i|
+    rows = 6
+    (1..rows).each do |i|
       array[i] = body.slice!(0, 21).rstrip
     end
 
