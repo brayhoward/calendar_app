@@ -46,7 +46,7 @@ class Month
       month << i.to_s.center(3)
     end
 
-    first_day_of_month = Day.new(@month, @year).month_start
+    first_day_of_month = Day.new(@month, @year, 1).month_start
 
     first_day_of_month.times do
     month.unshift("\s\s\s")
@@ -70,7 +70,7 @@ class Month
       body << i.to_s.center(3)
     end
 
-    first_day_of_month = Day.new(@month, @year).month_start
+    first_day_of_month = Day.new(@month, @year, 1).month_start
     body.prepend("\s\s\s" * first_day_of_month)
 
     rows = 6

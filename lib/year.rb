@@ -73,7 +73,7 @@ class Year
 
     end
 
-     row4 = Array.new
+    row4 = Array.new
     6.times do |x|
 
       row4[x] = Array.new
