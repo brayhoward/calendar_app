@@ -28,7 +28,7 @@ class Year
   def to_s
     heading = @year.to_s.center(63).rstrip
     margin = String.new
-    days = "Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa"
+    days = ("Su Mo Tu We Th Fr Sa\s\s" * 3).rstrip
     header_1 = "      January               February               March"
     header_2 = "       April                  May                   June"
     header_3 = "        July                 August              September"

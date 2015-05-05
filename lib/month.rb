@@ -47,14 +47,15 @@ class Month
     end
 
     first_day_of_month = Day.new(@month, @year, 1).month_start
+    one_grid_space = "\s\s\s"
 
     first_day_of_month.times do
-    month.unshift("\s\s\s")
+    month.unshift(one_grid_space)
     end
 
     grid_size = 42
     (grid_size - month.length).times do
-      month.push("\s\s\s")
+      month.push(one_grid_space)
     end
     month
   end
@@ -70,23 +71,25 @@ class Month
       body << i.to_s.center(3)
     end
 
-    first_day_of_month = Day.new(@month, @year, 1).month_start
-    body.prepend("\s\s\s" * first_day_of_month)
+    one_grid_space = "\s\s\s"
 
-    rows = 6
-    (1..rows).each do |i|
+    first_day_of_month = Day.new(@month, @year, 1).month_start
+    body.prepend(one_grid_space * first_day_of_month)
+
+    grid_rows = 6
+    grid_rows.times do |i|
       array[i] = body.slice!(0, 21).rstrip
     end
 
     <<EOS
 #{header}
 #{sub_head}
+#{array[0]}
 #{array[1]}
 #{array[2]}
 #{array[3]}
 #{array[4]}
 #{array[5]}
-#{array[6]}
 EOS
   end
 
