@@ -1,14 +1,11 @@
 require_relative 'month'
 
 class Day
+  FIRST_OF_MONTH = 1
 
-  def initialize(month, year, date)
-    @month = month.to_i
-    @year = year.to_i
-    @date = date
-    if date > 31 or date < 1
-      raise ArgumentError, "Date not in acceptable range/format"
-    end
+  def initialize(month, year)
+    @month = month
+    @year = year
   end
 
   def month_start
@@ -17,13 +14,13 @@ class Day
       @year -= 1
     end
 
-    month_day = (@date) #q
-    month = @month      #m
-    year = @year        #Y
+    day_in_question   = FIRST_OF_MONTH
+    month             = @month
+    year              = @year
 
     # formula based on Zeller's congruence.
     # http://en.wikipedia.org/wiki/Zeller's_congruence
-    start_day_index = (month_day + (( 26 * (month + 1)) / 10) + year +
+    start_day_index = (day_in_question + (( 26 * (month + 1)) / 10) + year +
                        (year / 4) + 6 * (year / 100) + (year / 400)) % 7
 
     if start_day_index.zero?

@@ -16,7 +16,7 @@ class Month
 
   DAYS_IN_FEB_ON_LEAP_YEAR = 29
 
-  ROWS_FOR_MONTH_GRID = 6
+  ROWS_IN_MONTH_GRID = 6
 
   DAYS_OF_WEEK = "Su Mo Tu We Th Fr Sa"
 
@@ -29,7 +29,7 @@ class Month
     @is_leap_year = Year.leap_year?(@year)
   end
 
-  def name
+  def month_name
     MONTHS_ARRAY[@month]
   end
 
@@ -40,7 +40,7 @@ class Month
       month << i.to_s.center(3)
     end
 
-    first_day_of_month = Day.new(@month, @year, 1).month_start
+    first_day_of_month = Day.new(@month, @year).month_start
     one_grid_space = "\s\s\s"
 
     first_day_of_month.times do
@@ -54,19 +54,26 @@ class Month
     month
   end
 
-  def to_s
-    header = "#{name} #{@year}".center(20).rstrip
-    body = ""
-    array = []
+
+  def build_month
+    days_of_month = ""
 
     (1..number_of_days_in_month).each do |i|
-      body << i.to_s.center(3)
+      days_of_month << i.to_s.center(3)
     end
+    days_of_month.prepend(ONE_GRID_SPACE * start_day_index)
+  end
 
-    first_day_of_month = Day.new(@month, @year, 1).month_start
-    body.prepend(ONE_GRID_SPACE * first_day_of_month)
+  def start_day_index
+    Day.new(@month, @year).month_start
+  end
 
-    ROWS_FOR_MONTH_GRID.times do |i|
+  def to_s
+    header = "#{month_name} #{@year}".center(20).rstrip
+    body = build_month
+    array = []
+
+    ROWS_IN_MONTH_GRID.times do |i|
       array[i] = body.slice!(0, 21).rstrip
     end
 
