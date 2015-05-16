@@ -315,6 +315,12 @@ EOS
     assert_equal expected, output
   end
 
+  def test_no_args_given
+    output = `./cal.rb`
+    expected = "Try again with (./cal.rb [yyyy]) or (./cal.rb [mm] [yyyy])"
+    assert_equal expected, output
+  end
+
   def test_year_output_2003
     output = `./cal.rb 2003`
     expected = <<EOS
@@ -335,7 +341,7 @@ Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa
 13 14 15 16 17 18 19  11 12 13 14 15 16 17  15 16 17 18 19 20 21
 20 21 22 23 24 25 26  18 19 20 21 22 23 24  22 23 24 25 26 27 28
 27 28 29 30           25 26 27 28 29 30 31  29 30
-                                            
+
         July                 August              September
 Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa
        1  2  3  4  5                  1  2      1  2  3  4  5  6
@@ -343,7 +349,7 @@ Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa
 13 14 15 16 17 18 19  10 11 12 13 14 15 16  14 15 16 17 18 19 20
 20 21 22 23 24 25 26  17 18 19 20 21 22 23  21 22 23 24 25 26 27
 27 28 29 30 31        24 25 26 27 28 29 30  28 29 30
-                      31                    
+                      31
       October               November              December
 Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa
           1  2  3  4                     1      1  2  3  4  5  6
@@ -351,8 +357,9 @@ Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa
 12 13 14 15 16 17 18   9 10 11 12 13 14 15  14 15 16 17 18 19 20
 19 20 21 22 23 24 25  16 17 18 19 20 21 22  21 22 23 24 25 26 27
 26 27 28 29 30 31     23 24 25 26 27 28 29  28 29 30 31
-                      30                    
+                      30
 EOS
+    assert_equal expected, output
   end
 end
 

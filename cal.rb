@@ -1,23 +1,27 @@
 #!/usr/bin/env ruby
-
 require './lib/month'
 require './lib/year'
 
-if ARGV.length == 2
+if ARGV.empty?
+  print "Try again with (./cal.rb [yyyy]) or (./cal.rb [mm] [yyyy])"
+  exit
+elsif ARGV.length == 2
+  month = ARGV[0].to_i
+  year  = ARGV[1].to_i
+else
+  year = ARGV[0].to_i
+  month = false
+end
 
-  begin
-  	puts Month.new(ARGV[0],ARGV[1]).to_s
-  rescue
-  	print "Date not in acceptable format/range"
+if Year.in_range?(year)
+
+  if month == false
+    puts Year.new(year).to_s
+  else
+    puts Month.new(month, year).to_s
   end
 
 else
-
-  begin
-    puts Year.new(ARGV[0]).to_s
-  rescue
-    print "Date not in acceptable format/range"
-  end
-
+  print "Date not in acceptable format/range"
 end
 

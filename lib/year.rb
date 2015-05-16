@@ -4,9 +4,12 @@ class Year
   attr_reader :year
 
   def initialize(year)
-    @year = year.to_i
+    @year = year
   end
 
+  def self.in_range?(year)
+    (1800..3000).include?(year)
+  end
 
   def self.leap_year?(year)
     if year % 4 == 0 or year % 400 == 0
