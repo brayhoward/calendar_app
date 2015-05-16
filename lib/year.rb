@@ -21,7 +21,7 @@ class Year
       century_leap_year = false
     end
 
-    regular_leap_year and not century_leap_year
+    regular_leap_year && !century_leap_year
   end
 
 

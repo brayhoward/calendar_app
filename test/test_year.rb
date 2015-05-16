@@ -8,40 +8,40 @@ class TestYear < Minitest::Test
     assert_equal 2000, y.year
   end
 
-  def test_year_is_leap_is_true
-    y = Year.new(2004)
-    assert_equal true, y.leap_year?
+  def test_leap_year_is_true
+    year = Year.leap_year?(2004)
+    assert_equal true, year
   end
 
-  def test_year_is_leap_is_false
-    y = Year.new(2003)
-    assert_equal false, y.leap_year?
+  def test_leap_year_is_false
+    year = Year.leap_year?(2003)
+    assert_equal false, year
   end
 
 
   def test_leap_year_method_for_reg_leap_year
-    y = Year.new(2016)
-    assert_equal true, y.leap_year?
+    year = Year.leap_year?(2016)
+    assert_equal true, year
   end
 
   def test_leap_year_method_for_century_leap_year
-    y = Year.new(2300)
-    assert_equal false, y.leap_year?
+    year = Year.leap_year?(2300)
+    assert_equal false, year
   end
 
   def test_leap_year_method_for_400year_leap_year
-    y = Year.new(2400)
-    assert_equal true, y.leap_year?
+    year = Year.leap_year?(2400)
+    assert_equal true, year
   end
 
   def test_end_of_century_leap_year
-    y = Year.new(2000)
-    assert_equal true, y.leap_year?
+    year = Year.leap_year?(2000)
+    assert_equal true, year
   end
 
   def test_century_leap_year_1900
-    y = Year.new(1900)
-    assert_equal false, y.leap_year?
+    year = Year.leap_year?(1900)
+    assert_equal false, year
   end
 
   def test_to_s_output_for_year

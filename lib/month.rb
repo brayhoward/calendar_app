@@ -14,6 +14,8 @@ class Month
                          31, 30, 31, 30,
                          31]
 
+  DAYS_IN_FEB_ON_LEAP_YEAR = 29
+
   ROWS_FOR_MONTH_GRID = 6
 
   DAYS_OF_WEEK = "Su Mo Tu We Th Fr Sa"
@@ -24,6 +26,7 @@ class Month
   def initialize(month, year)
     @month = month.to_i
     @year = year.to_i
+    @is_leap_year = Year.leap_year?(@year)
     in_range?
   end
 
@@ -89,8 +92,8 @@ EOS
   private
 
   def number_of_days_in_month
-    if @month == 2 and Year.leap_year?(@year)
-      29
+    if @month == 2 && @is_leap_year
+      DAYS_IN_FEB_ON_LEAP_YEAR
     else
       DAYS_IN_MONTH_ARRAY[@month]
     end
