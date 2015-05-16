@@ -89,7 +89,7 @@ EOS
   private
 
   def number_of_days_in_month
-    if @month == 2 and Year.new(@year).leap_year?
+    if @month == 2 and Year.leap_year?(@year)
       29
     else
       DAYS_IN_MONTH_ARRAY[@month]
