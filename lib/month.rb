@@ -14,6 +14,12 @@ class Month
                          31, 30, 31, 30,
                          31]
 
+  ROWS_FOR_MONTH_GRID = 6
+
+  DAYS_OF_WEEK = "Su Mo Tu We Th Fr Sa"
+
+  ONE_GRID_SPACE = "\s\s\s"
+
 
   def initialize(month, year)
     @month = month.to_i
@@ -27,22 +33,14 @@ class Month
     end
   end
 
-  def length
-    if @month == 2 and Year.new(@year).leap_year?
-      29
-    else
-      DAYS_IN_MONTH_ARRAY[@month]
-    end
-  end
-
   def name
     MONTHS_ARRAY[@month]
   end
 
   def to_year
-    month = Array.new
+    month = []
 
-    (1..length).each do |i|
+    (1..number_of_days_in_month).each do |i|
       month << i.to_s.center(3)
     end
 
@@ -61,29 +59,24 @@ class Month
   end
 
   def to_s
-
     header = "#{name} #{@year}".center(20).rstrip
-    sub_head = "Su Mo Tu We Th Fr Sa"
-    body = String.new
-    array = Array.new
+    body = ""
+    array = []
 
-    (1..length).each do |i|
+    (1..number_of_days_in_month).each do |i|
       body << i.to_s.center(3)
     end
 
-    one_grid_space = "\s\s\s"
-
     first_day_of_month = Day.new(@month, @year, 1).month_start
-    body.prepend(one_grid_space * first_day_of_month)
+    body.prepend(ONE_GRID_SPACE * first_day_of_month)
 
-    grid_rows = 6
-    grid_rows.times do |i|
+    ROWS_FOR_MONTH_GRID.times do |i|
       array[i] = body.slice!(0, 21).rstrip
     end
 
     <<EOS
 #{header}
-#{sub_head}
+#{DAYS_OF_WEEK}
 #{array[0]}
 #{array[1]}
 #{array[2]}
@@ -91,6 +84,16 @@ class Month
 #{array[4]}
 #{array[5]}
 EOS
+  end
+
+  private
+
+  def number_of_days_in_month
+    if @month == 2 and Year.new(@year).leap_year?
+      29
+    else
+      DAYS_IN_MONTH_ARRAY[@month]
+    end
   end
 
 
