@@ -8,6 +8,12 @@ class Day
     @year = year
   end
 
+  def month_start
+    index_adjust
+  end
+
+  private
+
   def day_finder
     # NOTE: In this algorithm January and February are counted as months 13 and 14 of the previous year.
     if @month == 1 or @month == 2
@@ -30,10 +36,6 @@ class Day
     else
       day_finder - 1
     end
-  end
-
-  def month_start
-    start_day_index = index_adjust
   end
 
 end
