@@ -26,7 +26,10 @@ class Month
   def initialize(month, year)
     @month = month
     @year = year
-    @is_leap_year = Year.leap_year?(@year)
+    @is_leap_year = Year.leap_year?(year)
+    unless Year.in_range?(year)
+      raise RangeError, "Date not in acceptable format/range"
+    end
   end
 
   def month_name
