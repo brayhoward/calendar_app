@@ -3,6 +3,18 @@ require_relative '../lib/year'
 
 class TestYear < Minitest::Test
 
+  def test_invalid_year_argument
+    assert_raises RangeError do
+      Year.new(3001)
+    end
+  end
+
+  def test_invalid_year_argument
+    assert_raises RangeError do
+      Year.new(1799)
+    end
+  end
+
   def test_year_initiates_year_value
     y = Year.new(2000)
     assert_equal 2000, y.year
