@@ -5,6 +5,18 @@ require 'minitest/autorun'
 
 class TestCalIntegration < Minitest::Test
 
+  def test_three_arguments_for_cal
+    output = `./cal.rb 11 19 1999`
+    expected = "Try again with (./cal.rb [yyyy]) or (./cal.rb [mm] [yyyy])\n\n"
+    assert_equal expected, output
+  end
+
+  def test_invalid_month_argument
+    output = `./cal.rb 13 3000`
+    expected = "Try again with (./cal.rb [yyyy]) or (./cal.rb [mm] [yyyy])\n\n"
+    assert_equal expected, output
+  end
+
   def test_month_starting_sunday
     output = `./cal.rb 1 2012`
     expected = <<EOS
@@ -317,7 +329,7 @@ EOS
 
   def test_no_args_given
     output = `./cal.rb`
-    expected = "Try again with (./cal.rb [yyyy]) or (./cal.rb [mm] [yyyy])"
+    expected = "Try again with (./cal.rb [yyyy]) or (./cal.rb [mm] [yyyy])\n\n"
     assert_equal expected, output
   end
 

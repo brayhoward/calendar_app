@@ -10,6 +10,17 @@ class TestMonth < Minitest::Test
     assert_equal 2015, m.year
   end
 
+  def test_invalid_month_argument
+    assert_raises RangeError do
+      Month.new(13, 2000)
+    end
+  end
+
+  def test_invalid_month_argument_two
+    assert_raises RangeError do
+      Month.new(0, 2000)
+    end
+  end
 
   def test_to_s_on_feb_2015
     m = Month.new(03, 2015)

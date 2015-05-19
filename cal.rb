@@ -3,7 +3,7 @@ require './lib/month'
 require './lib/year'
 
 if ARGV.empty?
-  print "Try again with (./cal.rb [yyyy]) or (./cal.rb [mm] [yyyy])"
+  print "Try again with (./cal.rb [yyyy]) or (./cal.rb [mm] [yyyy])\n\n"
   exit
 elsif ARGV.length == 2
   month = ARGV[0].to_i
