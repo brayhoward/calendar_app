@@ -5,6 +5,9 @@ class Year
 
   def initialize(year)
     @year = year
+    unless Year.in_range?(year)
+      raise RangeError, "Date not in acceptable format/range"
+    end
   end
 
   def self.in_range?(year)

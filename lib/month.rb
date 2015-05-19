@@ -30,6 +30,13 @@ class Month
     unless Year.in_range?(year)
       raise RangeError, "Date not in acceptable format/range"
     end
+    unless Month.valid?(month)
+      raise RangeError, "Date not in acceptable format/range"
+    end
+  end
+
+  def self.valid?(month)
+    (1..12).include?(month)
   end
 
   def month_name

@@ -13,7 +13,7 @@ class TestCalIntegration < Minitest::Test
 
   def test_invalid_month_argument
     output = `./cal.rb 13 3000`
-    expected = "Try again with (./cal.rb [yyyy]) or (./cal.rb [mm] [yyyy])\n\n"
+    expected = "Date not in acceptable format/range\nTry again with (./cal.rb [yyyy]) or (./cal.rb [mm] [yyyy])\n\n"
     assert_equal expected, output
   end
 
@@ -305,25 +305,25 @@ EOS
 
   def test_date_to_early
     output = `./cal.rb 1 1756 `
-    expected = "Date not in acceptable format/range"
+    expected = "Date not in acceptable format/range\nTry again with (./cal.rb [yyyy]) or (./cal.rb [mm] [yyyy])\n\n"
     assert_equal expected, output
   end
 
   def test_date_to_late
     output = `./cal.rb 2 3001`
-    expected = "Date not in acceptable format/range"
+    expected = "Date not in acceptable format/range\nTry again with (./cal.rb [yyyy]) or (./cal.rb [mm] [yyyy])\n\n"
     assert_equal expected, output
   end
 
   def test_date_to_late_3002
     output = `./cal.rb 2 3002`
-    expected = "Date not in acceptable format/range"
+    expected = "Date not in acceptable format/range\nTry again with (./cal.rb [yyyy]) or (./cal.rb [mm] [yyyy])\n\n"
     assert_equal expected, output
   end
 
   def test_inproper_date_format
     output = `./cal.rb 2014 4`
-    expected = "Date not in acceptable format/range"
+    expected = "Date not in acceptable format/range\nTry again with (./cal.rb [yyyy]) or (./cal.rb [mm] [yyyy])\n\n"
     assert_equal expected, output
   end
 

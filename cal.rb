@@ -2,7 +2,7 @@
 require './lib/month'
 require './lib/year'
 
-if ARGV.empty?
+if ARGV.empty? or ARGV.length > 2
   print "Try again with (./cal.rb [yyyy]) or (./cal.rb [mm] [yyyy])\n\n"
   exit
 elsif ARGV.length == 2
@@ -13,15 +13,13 @@ else
   month = false
 end
 
-if Year.in_range?(year)
+if Year.in_range?(year) and month == false
+  puts Year.new(year).to_s
 
-  if month == false
-    puts Year.new(year).to_s
-  else
-    puts Month.new(month, year).to_s
-  end
+elsif month and Month.valid?(month)
+  puts Month.new(month, year).to_s
 
 else
-  print "Date not in acceptable format/range"
+  print "Date not in acceptable format/range\nTry again with (./cal.rb [yyyy]) or (./cal.rb [mm] [yyyy])\n\n"
 end
 
