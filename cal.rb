@@ -16,9 +16,8 @@ end
 if Year.in_range?(year) and month == false
   puts Year.new(year).to_s
 
-elsif month and Month.valid?(month)
+elsif Year.in_range?(year) and Month.valid?(month)
   puts Month.new(month, year).to_s
-
 else
   print "Date not in acceptable format/range\nTry again with (./cal.rb [yyyy]) or (./cal.rb [mm] [yyyy])\n\n"
 end

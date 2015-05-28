@@ -18,6 +18,8 @@ class Month
 
   ROWS_IN_MONTH_GRID = 6
 
+  GRID_SIZE = 42
+
   DAYS_OF_WEEK = "Su Mo Tu We Th Fr Sa"
 
   ONE_GRID_SPACE = "\s\s\s"
@@ -28,10 +30,10 @@ class Month
     @year = year
     @is_leap_year = Year.leap_year?(year)
     unless Year.in_range?(year)
-      raise RangeError, "Date not in acceptable format/range"
+      raise RangeError, "Year not in acceptable format/range"
     end
     unless Month.valid?(month)
-      raise RangeError, "Date not in acceptable format/range"
+      raise RangeError, "Month not in acceptable format/range"
     end
   end
 
@@ -50,16 +52,14 @@ class Month
       month << i.to_s.center(3)
     end
 
-    first_day_of_month = Day.new(@month, @year).month_start
-    one_grid_space = "\s\s\s"
-
+    first_day_of_month = start_day_index
+    # Start 1st of month on proper week day in month grid
     first_day_of_month.times do
-    month.unshift(one_grid_space)
+    month.unshift(ONE_GRID_SPACE)
     end
-
-    grid_size = 42
-    (grid_size - month.length).times do
-      month.push(one_grid_space)
+    # adds spaces on end of month grid for unused grid spaces
+    (GRID_SIZE - month.length).times do
+      month.push(ONE_GRID_SPACE)
     end
     month
   end

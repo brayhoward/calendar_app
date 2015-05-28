@@ -31,6 +31,7 @@ class Day
   end
 
   def index_adjust
+    # adjust Zellers output so (0 = Sunday, 1 = Monday, 2 = Tuesday, ..., 6 = Saturday)
     if day_finder.zero?
       day_finder + 6
     else
