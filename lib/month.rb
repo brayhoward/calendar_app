@@ -37,13 +37,11 @@ class Month
     end
   end
 
+
   def self.valid?(month)
     (1..12).include?(month)
   end
 
-  def month_name
-    MONTHS_ARRAY[@month]
-  end
 
   def to_year
     month = []
@@ -64,19 +62,6 @@ class Month
     month
   end
 
-
-  def build_month
-    days_of_month = ""
-
-    (1..number_of_days_in_month).each do |i|
-      days_of_month << i.to_s.center(3)
-    end
-    days_of_month.prepend(ONE_GRID_SPACE * start_day_index)
-  end
-
-  def start_day_index
-    Day.new(@month, @year).month_start
-  end
 
   def to_s
     header = "#{month_name} #{@year}".center(20).rstrip
@@ -99,6 +84,7 @@ class Month
 EOS
   end
 
+
   private
 
   def number_of_days_in_month
@@ -109,7 +95,24 @@ EOS
     end
   end
 
+  def month_name
+    MONTHS_ARRAY[@month]
+  end
 
+
+  def build_month
+    days_of_month = ""
+
+    (1..number_of_days_in_month).each do |i|
+      days_of_month << i.to_s.center(3)
+    end
+    days_of_month.prepend(ONE_GRID_SPACE * start_day_index)
+  end
+
+
+  def start_day_index
+    Day.new(@month, @year).month_start
+  end
 end
 
 

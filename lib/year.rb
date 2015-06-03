@@ -2,6 +2,7 @@ require_relative 'month'
 
 class Year
   attr_reader :year
+MONTHS_IN_YEAR = 12
 
   def initialize(year)
     @year = year
@@ -40,16 +41,16 @@ class Year
     header_3 = "        July                 August              September"
     header_4 = "      October               November              December"
 
-    calendar_year = Array.new
-    12.times do |i|
-      calendar_year[i] = Month.new(i+1, @year).to_year
+    calendar_year = []
+    MONTHS_IN_YEAR.times do |i|
+      calendar_year[i] = Month.new(i+1, year).to_year
     end
 
 
-    row = Array.new
+    row = []
     6.times do |x|
 
-      row[x] = Array.new
+      row[x] = []
       3.times do |i|
         row[x] << calendar_year[i].slice!(0,7)
         row[x].push("\s")
@@ -57,10 +58,10 @@ class Year
 
     end
 
-    row2 = Array.new
+    row2 = []
     6.times do |x|
 
-      row2[x] = Array.new
+      row2[x] = []
       3.times do |i|
         row2[x] << calendar_year[i+3].slice!(0,7)
         row2[x].push("\s")
@@ -68,10 +69,10 @@ class Year
 
     end
 
-    row3 = Array.new
+    row3 = []
     6.times do |x|
 
-      row3[x] = Array.new
+      row3[x] = []
       3.times do |i|
         row3[x] << calendar_year[i+6].slice!(0,7)
         row3[x].push("\s")
@@ -79,10 +80,10 @@ class Year
 
     end
 
-    row4 = Array.new
+    row4 = []
     6.times do |x|
 
-      row4[x] = Array.new
+      row4[x] = []
       3.times do |i|
         row4[x] << calendar_year[i+9].slice!(0,7)
         row4[x].push("\s")

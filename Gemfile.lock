@@ -17,3 +17,6 @@ PLATFORMS
 DEPENDENCIES
   minitest
   minitest-reporters
+
+BUNDLED WITH
+   1.10.2
