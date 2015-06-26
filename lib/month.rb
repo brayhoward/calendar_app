@@ -29,12 +29,10 @@ class Month
     @month = month
     @year = year
     @is_leap_year = Year.leap_year?(year)
-    unless Year.in_range?(year)
-      raise RangeError, "Year not in acceptable format/range"
-    end
-    unless Month.valid?(month)
-      raise RangeError, "Month not in acceptable format/range"
-    end
+
+    raise RangeError, "Year not in acceptable format/range" unless Year.in_range?(year)
+
+    raise RangeError, "Month not in acceptable format/range" unless Month.valid?(month)
   end
 
 
